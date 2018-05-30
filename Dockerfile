@@ -6,9 +6,5 @@ COPY --from=pastebinit /usr/bin/pastebinit-server /usr/bin/pastebinit-server
 COPY --from=pastebinit /etc/ssl/certs/ /etc/ssl/certs
 COPY --from=pastebinit /src/static /src/static
 
-RUN echo "#!/bin/bash" > /start.sh
-RUN echo "pastebinit-server -b \$PASTEBINIT_URI" >> /start.sh
-RUN chmod +x /start.sh
+CMD ["sh", "-c", "/usr/bin/pastebinit-server -b $PASTEBINIT_URI -s $PASTEBINIT_STORAGE_DIR"]
 
-ENTRYPOINT [ "/start.sh" ]
-CMD []
