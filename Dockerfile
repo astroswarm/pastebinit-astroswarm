@@ -1,4 +1,4 @@
-FROM jess/pastebinit-server as pastebinit
+FROM jess/pastebinit-server:v0.2.1 as pastebinit
 
 FROM alpine
 RUN apk update && apk add bash
